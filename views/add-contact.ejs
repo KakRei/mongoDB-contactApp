@@ -1,0 +1,38 @@
+<div class="container mt-5">
+  <% if (errors.length > 0) { %>
+  <div class="alert alert-danger">
+    <% errors.forEach(error => { %>
+    <p><%= error.msg %></p>
+    <% }); %>
+  </div>
+  <% } %>
+  <form action="/contact" method="post">
+    <div class="mb-3">
+      <label for="nama" class="form-label">Nama</label>
+      <input
+        type="text"
+        class="form-control"
+        id="nama"
+        aria-describedby="namaHelp"
+        name="nama"
+      />
+      <label for="email" class="form-label">Email address</label>
+      <input
+        type="email"
+        class="form-control"
+        id="email"
+        aria-describedby="emailHelp"
+        name="email"
+      />
+      <label for="nohp" class="form-label">No HP</label>
+      <input
+        type="text"
+        class="form-control"
+        id="nohp"
+        aria-describedby="nohpHelp"
+        name="nohp"
+      />
+    </div>
+    <button type="submit" class="btn btn-primary">Submit</button>
+  </form>
+</div>

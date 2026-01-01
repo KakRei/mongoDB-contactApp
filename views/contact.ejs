@@ -1,0 +1,72 @@
+<div class="container">
+  <h1><%= title %></h1>
+
+  <div class="table-responsive" style="max-height: 425px; overflow-y: scroll">
+    <table class="table">
+      <% if (contacts.length === 0) { %>
+      <div class="card border-0 shadow-sm bg-light">
+        <div class="card-body text-center">
+          <h5 class="card-title text-danger">Data Tidak Tersedia</h5>
+
+          <p class="card-text text-muted">
+            Saat ini belum ada data yang bisa ditampilkan.
+          </p>
+
+          <a
+            href="/contact/add"
+            class="btn btn-outline-danger btn-sm rounded-pill"
+          >
+            Tambah Data
+          </a>
+        </div>
+      </div>
+      <% } else { %>
+      <thead class="table-light sticky-top">
+        <tr>
+          <th scope="col">No</th>
+          <th scope="col">Nama</th>
+          <th scope="col">Email</th>
+          <th scope="col">No. HP</th>
+          <th scope="col">Aksi</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% contacts.forEach((contact, i) => { %>
+        <tr>
+          <th scope="row"><%= i = i + 1 %></th>
+          <td><%= contact.nama %></td>
+          <% if (!contact.email) { %>
+          <td>-</td>
+          <% } else { %>
+          <td><%= contact.email %></td>
+          <% } %>
+          <td><%= contact.nohp %></td>
+          <td>
+            <a href="/contact/<%= contact._id %>">
+              <button type="button" class="btn btn-primary rounded-pill btn-sm">
+                <i class="bi bi-info-circle me-2"></i>Details
+              </button>
+            </a>
+          </td>
+        </tr>
+        <% }) %>
+      </tbody>
+      <% } %>
+    </table>
+  </div>
+  <% if (msg.length !== 0) { %>
+  <div class="alert alert-success mt-3" style="max-width: 400px" role="alert">
+    <%= msg %>
+  </div>
+  <% } %>
+  <a href="/contact/add">
+    <button
+      type="button"
+      class="btn btn-outline-primary rounded-pill"
+      style="display: flex; position: absolute; right: 260px; bottom: 40px"
+    >
+      <i class="bi bi-file-earmark-plus-fill mx-2"></i>
+      Tambah Data
+    </button>
+  </a>
+</div>
